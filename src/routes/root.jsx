@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 
 export default function Root() {
     return (
@@ -29,19 +29,24 @@ export default function Root() {
             </form>
           </div>
           <nav>
-            <ul>
+              <ul>
               <li>
-                <a href={`/contacts/1`}>Your Name</a>
+              <a href={`/contacts/1`}>Your Name Href</a>
+              </li>                
+              <li>
+                <Link to={`contacts/1`}>Your Name Link</Link>
               </li>
               <li>
-                <a href={`/contacts/2`}>Your Friend</a>
+                <Link to={`contacts/2`}>Your Friend Link</Link>
+              </li>
+              <li>              
+              <a href={`/contacts/2`}>Your Friend Href</a>            
               </li>
             </ul>
           </nav>
         </div>
             <div id="detail">
             < Outlet />
-
         </div>
       </>
     );
