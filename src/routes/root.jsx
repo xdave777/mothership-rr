@@ -19,6 +19,12 @@ export default function Root() {
   const { contacts, q } = useLoaderData();
   const navigation = useNavigation();
   const submit = useSubmit();
+  const searching =
+    navigation.location &&
+    new URLSearchParams(navigation.location.search).has(
+      "q"
+    );
+
 
   useEffect(() => {
     document.getElementById("q").value = q;
@@ -36,15 +42,15 @@ export default function Root() {
                 placeholder="Search"
                 type="search"
                 name="q"
-              defaultValue={q}
-              onChange={(event) => {
-                submit(event.currentTarget.form);
-              }}
+                defaultValue={q}
+                onChange={(event) => {
+                  submit(event.currentTarget.form);
+                }}
               />
               <div
                 id="search-spinner"
                 aria-hidden
-                hidden={true}
+                hidden={!searching}
               />
               <div
                 className="sr-only"
